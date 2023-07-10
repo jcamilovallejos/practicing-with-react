@@ -7,7 +7,7 @@ const TodoList = ({todos, handleDelete, handleUpdateTodo}) => {
     }
 
     return (
-        <div className='bg-white mt-4 rounded-md'>
+        <div className='bg-white mt-4 rounded-md dark:bg-gray-800'>
             {renderTodos()}
         </div>
     )

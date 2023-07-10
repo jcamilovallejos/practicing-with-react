@@ -28,7 +28,7 @@ const TodoItem = ({todo, handleDelete, handleUpdateTodo}) => {
             }
 
 
-            <p className='text-gray-700 grow'>{todo.title}</p>
+            <p className='text-gray-700 grow dark:text-white'>{todo.title}</p>
             <button className='flex-none' onClick={() => deleteTodo(todo.id)}>
                 <CrossIcon />
             </button>
