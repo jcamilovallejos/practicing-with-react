@@ -1,9 +1,9 @@
 import TodoItem from './TodoItem';
 
-const TodoList = ({todos}) => {
+const TodoList = ({todos, handleDelete, handleUpdateTodo}) => {
 
     const renderTodos  = () => {
-        return todos.map(todo => <TodoItem key={todo.id} todo={todo} />)
+        return todos.map(todo => <TodoItem key={todo.id} todo={todo} handleDelete={handleDelete} handleUpdateTodo={handleUpdateTodo} />)
     }
 
     return (

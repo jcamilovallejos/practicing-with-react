@@ -16,6 +16,7 @@ const initialTodos = [
 function App() {
 
   const [todos, setTodos] = useState(initialTodos)
+  const [filteredTodos, setFilteredTodos] = useState([])
 
   const handleCreateTodo = (todo) => {
     setTodos([
@@ -28,11 +29,31 @@ function App() {
   }
 
   const handleDeleteTodo = (id) => { 
-
+    setTodos(todos.filter(todo => todo.id === id))
   }
 
   const handleUpdateTodo = (id) => {
+    setTodos(todos.map(todo => {
+      if(todo.id === id) {
+        return {
+          ...todo,
+          completed: !todo.completed
+        }
+      }
+      return todo
+    }))
+  }
 
+  const handleClearCompleted = () => {
+    setTodos(todos.filter(todo => todo.completed === false))
+  }
+
+  const handleFilterTodo = (status) => {
+    if(status === 'All') {
+      setFilteredTodos([])
+    }else{
+      setFilteredTodos(todos.filter(item => item.completed !== status))
+    }
   }
 
   return (
@@ -43,9 +64,9 @@ function App() {
       <main className='container mx-auto px-4 mt-4 rounded-md'>
 
           <TodoCreate handleCreateTodo={handleCreateTodo} />
-          <TodoList todos={todos} />
-          <TodoComputed />
-          <TodoFilter />
+          <TodoList todos={filteredTodos.length > 0 ? filteredTodos : todos} handleDelete={handleDeleteTodo} handleUpdateTodo={handleUpdateTodo} />
+          <TodoComputed todos={todos} handleClearCompleted={handleClearCompleted} />
+          <TodoFilter handleFilterTodo={handleFilterTodo} />
 
       </main>
 
