@@ -57,13 +57,17 @@ function App() {
   }
 
   return (
-    <div className="container bg-[url('./assets/images/bg-mobile-light.jpg')] 
-    bg-no-repeat bg-contain bg-gray-300 dark:bg-gray-900 
-    min-h-screen dark:bg-[url('./assets/images/bg-mobile-dark.jpg')]">
+    <div className="bg-[url('./assets/images/bg-mobile-light.jpg')] 
+      bg-no-repeat bg-contain bg-gray-300 dark:bg-gray-900 
+      min-h-screen dark:bg-[url('./assets/images/bg-mobile-dark.jpg')]
+      md:bg-[url('./assets/images/bg-desktop-light.jpg')]
+      md:dark:bg-[url('./assets/images/bg-desktop-dark.jpg')]
+      transition-all duration-1000 ease-in-out
+    ">
 
       <Header />
 
-      <main className='container mx-auto px-4 mt-4 rounded-md'>
+      <main className='container mx-auto px-4 mt-4 rounded-md md:max-w-xl'>
 
           <TodoCreate handleCreateTodo={handleCreateTodo} />
           <TodoList todos={filteredTodos.length > 0 ? filteredTodos : todos} handleDelete={handleDeleteTodo} handleUpdateTodo={handleUpdateTodo} />

@@ -2,9 +2,11 @@ import MoonIcon from './icons/MoonIcon'
 import SunIcon from './icons/IconSun'
 import { useEffect, useState } from 'react'
 
+const initialStateDarkMode = localStorage.getItem('theme') === 'dark';
+
 const Header = () => {
 
-    const [darkMode, setDarkMode] = useState(false)
+    const [darkMode, setDarkMode] = useState(initialStateDarkMode)
 
     const handleClickToggleTheme = () => {
         setDarkMode(!darkMode)
